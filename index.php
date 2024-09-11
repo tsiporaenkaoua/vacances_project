@@ -11,9 +11,10 @@ try{
   die('Erreur de connexion à la base de données: ' . $e->getMessage());
 }
 
-$essai = 'coucou !';
+//Ce fichier est utilisé comme routeur: il va diriger la demande vers le contrôleur approprié grace à des switch
 
-require ('src/Templates/Incription.php');
+
+require ('src/Templates/VueFiche.php');
 
 
 
