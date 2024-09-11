@@ -1,5 +1,8 @@
 README
 
+
+ouvrir une page php sur le nav : php -S localhost:8000
+
 Application ou l'on tient un journal de vacances
 
 PHP pur 
