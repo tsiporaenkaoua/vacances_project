@@ -2,7 +2,8 @@
     "name": "utilisateur/vacances_project",
     "autoload": {
         "psr-4": {
-             "lib\\": "src/lib/"
+             "lib\\": "src/lib/",
+             "template\\": "src/Templates"
         }
     },
     "authors": [
