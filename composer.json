@@ -3,7 +3,9 @@
     "autoload": {
         "psr-4": {
              "lib\\": "src/lib/",
-             "template\\": "src/Templates"
+             "template\\": "src/Templates",
+             "Models\\": "src/Models",
+             "Controllers\\": "src/Controllers"
         }
     },
     "authors": [

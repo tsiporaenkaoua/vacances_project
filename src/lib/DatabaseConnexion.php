@@ -5,7 +5,6 @@ namespace lib;
 use PDO;
 use Exception;
 use PDOException;
-use Dotenv\Dotenv;
 
 class DatabaseConnexion
 {
@@ -17,34 +16,10 @@ class DatabaseConnexion
 
     public function __construct()
     {
-
-       // Charger les variables d'environnement depuis le fichier .env
-
-         $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2)); 
-         $dotenv->load();
-
-        // // Lire les variables d'environnement
-        // echo 'DB_HOST: ' . getenv('DB_HOST') . '<br>';
-        // echo 'DB_NAME: ' . getenv('DB_NAME') . '<br>';
-        // echo 'DB_USER: ' . getenv('DB_USER') . '<br>';
-        // echo 'DB_PASS: ' . getenv('DB_PASS') . '<br>';
-
-        //pbm de variables d'environnement contourné
-        putenv('DB_HOST=localhost');
-        putenv('DB_NAME=vacances_project');
-        putenv('DB_USER=root');
-        putenv('DB_PASS=');
-
-
-
-      
-       $dotenv->load();
-
-
-        $this->host = getenv('DB_HOST');
-        $this->dbname = getenv('DB_NAME');
-        $this->username = getenv('DB_USER');
-        $this->password = getenv('DB_PASS');
+        $this->host = 'localhost';
+        $this->dbname = 'vacances_project';
+        $this->username = 'root';
+        $this->password = "";
 
         $this->connect();
   
@@ -74,31 +49,8 @@ class DatabaseConnexion
         return $this->pdo;
     }
 
-    public function executeQuery($query, $params = [])
-    {
-        try {
-          //prépare
-            $stmt = $this->pdo->prepare($query);
-            //lie la query aux param
-            $stmt->execute($params);
-            //cherche les resultats
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            error_log($e->getMessage());
-            throw new Exception('Query execution failed');
-        }
-    }
+    
+
 }
-
-/*  example d'utilisation de cette classe
-try {
-    $db = new DatabaseConnexion();
-    $results = $db->executeQuery('SELECT * FROM users WHERE email = :email', ['email' => 'test@example.com']);
-    print_r($results);
-} catch (Exception $e) {
-    echo $e->getMessage();
-}*/
-
-
-//modif eventuelles transformer cette classe en singleton
-
+//soccuper de securiser les infos de la base de donnée
+//modif pr transformer cette classe en singleton POUR QUE LA CONNEXION PDO NE SE FASSE PAS A CHAQUE FOIS QUE LA PAGE INDEX SOIT APPELEE

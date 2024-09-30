@@ -11,9 +11,9 @@
 <h1>Connexion</h1>
 
   Bonjour, veuillez vous connecter pour profiter de cette application
-  <?php echo $essai?>
+  
 
-  <form>
+  <form method="post" action="index.php?action=Connexion"">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
