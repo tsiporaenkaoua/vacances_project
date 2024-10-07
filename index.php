@@ -24,10 +24,10 @@ $controller = new UserController( $pdo);
 switch ($action){
   case'Inscription' :
     $controller->register();
-    break;
-  // case 'Connexion' :
-  //   $controller->signIn();
-  //   break;
+  break;
+  case 'Connexion' :
+    $controller->signIn();
+  break;
 }  
 
 

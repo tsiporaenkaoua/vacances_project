@@ -49,6 +49,20 @@ public function deleteUser($idUser){
   $request->execute();
 }
 
+//verifier que l'identifiant et le mdp sont valides lors d'une connexion
+public function isValidUser($email,$password){
+  $request = $this->pdo->prepare('SELECT password FROM user WHERE email = :email ');
+  $request->bindParam(':email', $email);
+  $request->execute();
+
+  $hashedPassword=$request->fetchColumn();
+
+  if($hashedPassword && password_verify($password,$hashedPassword)){
+    return true;
+  }
+  return false;
+}
+
  }
 
  

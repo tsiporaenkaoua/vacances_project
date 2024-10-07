@@ -13,7 +13,7 @@ class UserController{
     $this->model = new User($pdo);
   }
 
-  function register(){ 
+ public function register(){ 
 
     if ($_SERVER['REQUEST_METHOD']==='POST'){
        $email = $_POST['email'];
@@ -43,7 +43,23 @@ class UserController{
      require ('./src/Templates/Inscription.php');
   }
 
-  function signIn(){
-    echo('hello');
+  public function signIn(){
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+
+      if(empty($email) || empty($password)){
+        $error = 'Veuillez remplir tous les champs';
+      }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+        $error = 'Le format de l\'email n\'est pas correct';
+      }elseif($this->model->isValidUser($email, $password)){
+        header('Location: ./src/Templates/Accueil.php');
+      } else{
+        $error = 'votre e-mail ou votre mot de passe est invalide';
+      }
+    require './src/Templates/Connexion.php';
+    
   }
+}
 }
