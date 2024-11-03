@@ -16,8 +16,8 @@ class UserController{
  public function register(){ 
 
     if ($_SERVER['REQUEST_METHOD']==='POST'){
-       $email = $_POST['email'];
-      $password = $_POST['password'];
+       $email = htmlspecialchars($_POST['email']);
+      $password =  htmlspecialchars($_POST['password']);
       
           if(empty($email) || empty($password)){
         $error = 'Veuillez remplir tous les champs';
@@ -44,17 +44,19 @@ class UserController{
   }
 
   public function signIn(){
+
     if($_SERVER['REQUEST_METHOD']==='POST'){
-      $email = $_POST['email'];
-      $password = $_POST['password'];
+      $_SESSION['email'] =  htmlspecialchars($_POST['email']);
+      $password =  htmlspecialchars($_POST['password']);
+      $_SESSION['idUser'] = $this->model->idUser($_SESSION['email']);
 
-
-      if(empty($email) || empty($password)){
+      if(empty( $_SESSION['email']) || empty($password)){
         $error = 'Veuillez remplir tous les champs';
-      }elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+      }elseif (!filter_var( $_SESSION['email'],FILTER_VALIDATE_EMAIL)){
         $error = 'Le format de l\'email n\'est pas correct';
-      }elseif($this->model->isValidUser($email, $password)){
-        header('Location: ./src/Templates/Accueil.php');
+      }elseif($this->model->isValidUser( $_SESSION['email'], $password)){
+        header('Location: ./index.php?action=ShowFolders');
+        exit;
       } else{
         $error = 'votre e-mail ou votre mot de passe est invalide';
       }

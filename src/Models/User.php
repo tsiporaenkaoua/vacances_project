@@ -22,11 +22,10 @@ use PDO;
 
     //prépare
     $request = $this->pdo->prepare('INSERT INTO user (email, password) VALUES (:email, :password)');
-    //lie la query aux param
-    $request->bindParam(':email', $email);
-    $request->bindParam(':password', $hashedPassword);
-
-    return $request->execute(); //renvoit un booleen pour indiquer si ca a fonctionné ou non
+    return $request->execute([
+      ':email'=> $email,
+      ':password'=> $hashedPassword
+    ]); //renvoit un booleen pour indiquer si ca a fonctionné ou non
   }
   
 
@@ -34,7 +33,7 @@ use PDO;
   //Verifier si on a deja un compte pour l'email saisi
   public function isEmailExists($email){
     $request = $this->pdo->prepare('SELECT COUNT(*) FROM user WHERE email= :email');
-    $request->bindParam(':email', $email);
+    $request->bindParam(':email', $email);// deux manieres de procéder soit direct on fait un tableau dans execute ou soit on utilise bindParam
     $request->execute();
     return $request->fetchColumn()>0;
 
@@ -63,8 +62,16 @@ public function isValidUser($email,$password){
   return false;
 }
 
+//Connaitre l'idUser a partir de son email
+public function idUser($email){
+  $request = $this->pdo->prepare('SELECT idUser FROM User WHERE email = :email');
+  $request->execute([':email' => $email]);
+  return $request->fetchColumn();
+}
+
+
+
  }
 
  
 
-//Retourner les infos du user (pas besoin de cette fonction parce qu'on crée une session?)

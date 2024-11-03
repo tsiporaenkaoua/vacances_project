@@ -1,8 +1,12 @@
 <?php
+
+session_start();
+
 require 'vendor/autoload.php';
 
 use Controllers\UserController;
 use lib\DatabaseConnexion;
+use Controllers\DossierController;
 
 
 //Connexion a la BDD
@@ -19,14 +23,21 @@ $pdo = $database->getPDO();
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'Inscription';
 
-$controller = new UserController( $pdo);
+$controllerUser = new UserController( $pdo);
+$controllerDossier = new DossierController($pdo);
 
 switch ($action){
   case'Inscription' :
-    $controller->register();
+    $controllerUser->register();
   break;
   case 'Connexion' :
-    $controller->signIn();
+    $controllerUser->signIn();
+  break;
+  case 'ShowFolders' :
+    $controllerDossier->showFolders();
+  break;
+  case 'CreateFolder' :
+    $controllerDossier->createFolder();
   break;
 }  
 
