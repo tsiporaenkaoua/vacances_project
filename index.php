@@ -4,8 +4,9 @@ session_start();
 
 require 'vendor/autoload.php';
 
-use Controllers\UserController;
 use lib\DatabaseConnexion;
+use Controllers\UserController;
+use Controllers\FicheController;
 use Controllers\DossierController;
 
 
@@ -25,6 +26,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'Inscription';
 
 $controllerUser = new UserController( $pdo);
 $controllerDossier = new DossierController($pdo);
+$controllerFiche = new FicheController($pdo);
 
 switch ($action){
   case'Inscription' :
@@ -39,6 +41,12 @@ switch ($action){
   case 'CreateFolder' :
     $controllerDossier->createFolder();
   break;
+  case'ShowFiles' :
+    $controllerFiche->showFiles();
+    break;
+    // case 'CreateFile' :
+    //   $controllerDossier->createFile();
+    // break;
 }  
 
 

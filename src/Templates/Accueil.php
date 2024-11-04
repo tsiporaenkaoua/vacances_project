@@ -56,7 +56,7 @@
                     <?php foreach ($dossiers as $dossier) : ?>
                         <li>
                           <?php echo htmlspecialchars($dossier['name']); ?>
-                          <a href="..\..\index.php?action=ShowFiles&idDossier=<?php echo urlencode($dossier['idDossier']);?>">
+                          <a href="..\..\index.php?action=ShowFiles&idDossier=<?php echo urlencode($dossier['idDossier']);?>"> 
                           <img src="..\..\Media\picVacances.jpg" class="img-fluid" alt="Vacances">
                           </a>
                         </li>

@@ -38,8 +38,14 @@ public function listFolders($idUser){
   return $dossiers;
 }
 
+//retourne le nom d'un dossier en fonction de l'idDossier
+public function nameDossier($idDossier){
+  $request = $this->pdo->prepare('SELECT name FROM dossier WHERE idDossier = :idDossier');
+  $request->execute([':idDossier' => $idDossier]);
+  return $request->fetchColumn();
 }
 
+}
 
 
 //supprimer un dossier

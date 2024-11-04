@@ -7,12 +7,12 @@
   <title>Contenu dossier</title>
 </head>
 <body>
-    <h1>$Variable nom de dossier</h1>
+    <h1>Dossier : <?php echo htmlspecialchars($nameDossier) ?></h1>
     
     <h3>Créer une nouvelle fiche de vacances :</h3>
     <!-- Bouton pour créer un dossier -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#folderModal">
-      Créer une fiche Ajouter le lien vers formulaire fiche
+      <a href="src\Templates\CreationFiche.php" style="text-decoration:none; color:#faf5f4">Créer une fiche </a>
     </button>
 
   
@@ -26,17 +26,18 @@
     <div class="row">
         <div class="col-md-4 d-flex align-items-start">
             <ol>
-                <?php if (!empty($fiches)) : ?>
-                    <?php foreach ($dossiers as $dossier) : ?>
+                <?php if (!empty($files)) : ?>
+                    <?php foreach ($files as $file) : ?>
                         <li>
                             <button class="btn btn-light">
-                                <?php echo htmlspecialchars($dossier['name']); ?>
+                                <?php echo htmlspecialchars($file['name']); ?>
                                 <img src="..\..\Media\picVacances.jpg" class="img-fluid" alt="Vacances">
                             </button>
                         </li>
-                    <?php endforeach; ?>
+<?php endforeach; ?>
+                    
                 <?php else : ?>
-                    <div>Créez votre premier dossier de vacances !</div>
+                    <div>Créez votre premiere fiche de vacances!</div>
                 <?php endif; ?>
             </ol>
         </div>
