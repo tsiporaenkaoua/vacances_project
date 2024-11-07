@@ -13,8 +13,21 @@ class Fiche{
   }
 
 //créer une nouvelle fiche dans dossier choisi
-public function createNewFile($idDossier){
- // $request = $this->pdo->prepare('INSERT INTO ')
+public function createNewFile($name, $date, $weather, $itinerary, $program, $anecdote, $meal, $learned, $atmosphere, $idDossier, $idUser){
+ $request = $this->pdo->prepare('INSERT INTO fiche (name, date, weather, itinerary, program, anecdote, meal, learned, atmosphere, idDossier, idUser) VALUES (:name, :date, :weather, :itinerary, :program, :anecdote, :meal, :learned, :atmosphere, :idDossier, :idUser) ');
+$request->execute([
+  ':name' => $name,
+  ':date' => $date,
+  ':weather'=> $weather,
+  ':itinerary' => $itinerary, 
+  ':program' => $program, 
+  ':anecdote' => $anecdote, 
+  ':meal' => $meal, 
+  ':learned' => $learned, 
+  ':atmosphere' => $atmosphere, 
+  ':idDossier' => $idDossier, 
+  ':idUser' => $idUser
+]);
 }
 
 //retourner tous les fiches  en fonction d'un idDossier précis

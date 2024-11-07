@@ -9,7 +9,14 @@
 <body>
     <div class="container mt-5">
         <h2>Journal de Vacances</h2>
-        <form>
+        <form method="POST" action="../../index.php?action=SubmitFile">
+            
+             <!-- Nom de la fiche -->
+            <div class="form-group">
+                <label for="nom">Titre :</label>
+                <input type="text" id="titre" name="name" class="form-control" placeholder="Donner un titre à votre journée...">
+            </div>
+
             <!-- Date avec sélection du calendrier -->
             <div class="form-group">
                 <label for="date">Date :</label>
@@ -19,48 +26,48 @@
             <!-- Ambiance -->
             <div class="form-group">
                 <label for="ambiance">Ambiance :</label>
-                <textarea id="ambiance" name="ambiance" class="form-control" rows="3" placeholder="Décrire l'ambiance..."></textarea>
+                <textarea id="ambiance" name="atmosphere" class="form-control" rows="3" placeholder="Décrire l'ambiance..."></textarea>
             </div>
 
             <!-- Météo avec emojis -->
             <div class="form-group">
                 <label for="meteo">Météo :</label>
                 <div>
-                    <label><input type="radio" name="meteo" value="☀️"> ☀️ Soleil</label>
-                    <label><input type="radio" name="meteo" value="⛅"> ⛅ Nuageux</label>
-                    <label><input type="radio" name="meteo" value="🌧️"> 🌧️ Pluie</label>
-                    <label><input type="radio" name="meteo" value="❄️"> ❄️ Neige</label>
+                    <label><input type="radio" name="weather" value="☀️"> ☀️ Soleil</label>
+                    <label><input type="radio" name="weather" value="⛅"> ⛅ Nuageux</label>
+                    <label><input type="radio" name="weather" value="🌧️"> 🌧️ Pluie</label>
+                    <label><input type="radio" name="weather" value="❄️"> ❄️ Neige</label>
                 </div>
             </div>
 
             <!-- Itinéraire -->
             <div class="form-group">
                 <label for="itineraire">Itinéraire :</label>
-                <textarea id="itineraire" name="itineraire" class="form-control" rows="3" placeholder="Décrire l'itinéraire..."></textarea>
+                <textarea id="itineraire" name="itinerary" class="form-control" rows="3" placeholder="Décrire l'itinéraire..."></textarea>
             </div>
 
             <!-- Programme de la journée -->
             <div class="form-group">
                 <label for="programme">Programme de la journée :</label>
-                <textarea id="programme" name="programme" class="form-control" rows="3" placeholder="Décrire le programme de la journée..."></textarea>
+                <textarea id="programme" name="program" class="form-control" rows="3" placeholder="Décrire le programme de la journée..."></textarea>
             </div>
 
             <!-- Anecdotes -->
             <div class="form-group">
-                <label for="anecdotes">Anecdotes :</label>
-                <textarea id="anecdotes" name="anecdotes" class="form-control" rows="3" placeholder="Partagez une anecdote..."></textarea>
+                <label for="anecdote">Point fort de la journée : :</label>
+                <textarea id="anecdote" name="anecdote" class="form-control" rows="3" placeholder="Partagez une anecdote..."></textarea>
             </div>
 
             <!-- Ce que vous avez mangé -->
             <div class="form-group">
                 <label for="mange">Ce que j'ai mangé :</label>
-                <textarea id="mange" name="mange" class="form-control" rows="3" placeholder="Décrire ce que vous avez mangé..."></textarea>
+                <textarea id="mange" name="meal" class="form-control" rows="3" placeholder="Décrire ce que vous avez mangé..."></textarea>
             </div>
 
             <!-- Ce que vous avez appris -->
             <div class="form-group">
                 <label for="appris">Ce que j'ai appris :</label>
-                <textarea id="appris" name="appris" class="form-control" rows="3" placeholder="Décrire ce que vous avez appris..."></textarea>
+                <textarea id="appris" name="learned" class="form-control" rows="3" placeholder="Décrire ce que vous avez appris..."></textarea>
             </div>
 
             <!-- Upload photos -->
@@ -80,3 +87,6 @@
     </script>
 </body>
 </html>
+
+<!--Gerer le controle de la saisie
+enlevr le champs itineraire-->

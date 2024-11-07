@@ -17,7 +17,7 @@
 
   
     <div>
-      <h3>Dossiers de vacances :</h3>
+      <h3>Toutes mes fiches :</h3>
       
 
      
@@ -29,10 +29,11 @@
                 <?php if (!empty($files)) : ?>
                     <?php foreach ($files as $file) : ?>
                         <li>
-                            <button class="btn btn-light">
-                                <?php echo htmlspecialchars($file['name']); ?>
+                            <?php echo htmlspecialchars($file['name']); ?>
+                            <a href="..\..\index.php?action=ShowFile&idDossier=<?php echo urlencode($dossier['idDossier']);?>"> 
                                 <img src="..\..\Media\picVacances.jpg" class="img-fluid" alt="Vacances">
-                            </button>
+                                </a>
+                            
                         </li>
 <?php endforeach; ?>
                     

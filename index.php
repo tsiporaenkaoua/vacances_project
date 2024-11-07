@@ -44,9 +44,14 @@ switch ($action){
   case'ShowFiles' :
     $controllerFiche->showFiles();
     break;
-    // case 'CreateFile' :
-    //   $controllerDossier->createFile();
-    // break;
+    case 'SubmitFile' :
+      $controllerFiche->createFile();
+    break;
+  // case'ShowFileDetails' :
+  //   $controllerFiche->showFileDetails();
+  //   break;
+
+    
 }  
 
 
