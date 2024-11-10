@@ -47,9 +47,9 @@ switch ($action){
     case 'SubmitFile' :
       $controllerFiche->createFile();
     break;
-  // case'ShowFileDetails' :
-  //   $controllerFiche->showFileDetails();
-  //   break;
+  case'ShowFileDetails' :
+    $controllerFiche->showFileDetails();
+    break;
 
     
 }  

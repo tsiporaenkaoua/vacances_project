@@ -43,6 +43,14 @@ public function getNameDossier($idDossier){
   return $dossierModel->nameDossier($idDossier);
 }
 
+//retourner le contenu d'une fiche précise
+public function detailsFiche($idFiche){
+  $request = $this->pdo->prepare('SELECT name, date, weather, itinerary, program, anecdote, meal, learned, atmosphere FROM Fiche WHERE idFiche = :idFiche');
+  $request->execute([':idFiche' =>$idFiche]);
+  $ficheDetails = $request->fetch(PDO::FETCH_ASSOC);
+  return $ficheDetails;
+}
+
 //supprimer une fiche
 //modifier la fiche
 

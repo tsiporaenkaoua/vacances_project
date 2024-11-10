@@ -26,11 +26,11 @@
     <div class="row">
         <div class="col-md-4 d-flex align-items-start">
             <ol>
-                <?php if (!empty($files)) : ?>
-                    <?php foreach ($files as $file) : ?>
+                <?php if (!empty($fiches)) : ?>
+                    <?php foreach ($fiches as $fiche) : ?>
                         <li>
-                            <?php echo htmlspecialchars($file['name']); ?>
-                            <a href="..\..\index.php?action=ShowFile&idDossier=<?php echo urlencode($dossier['idDossier']);?>"> 
+                            <?php echo htmlspecialchars($fiche['name']); ?>
+                            <a href="..\..\index.php?action=ShowFileDetails&idFiche=<?php echo urlencode($fiche['idFiche']);?>"> 
                                 <img src="..\..\Media\picVacances.jpg" class="img-fluid" alt="Vacances">
                                 </a>
                             
